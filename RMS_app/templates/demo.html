@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Wireframe</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      height: 60px;
+      background: #2c3e50;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    /* .header .logo {
+      font-size: 18px;
+      font-weight: bold;
+    } */
+
+    .header {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .header .user {
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+    .footer {
+      height: 30px;
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* WRAPPER */
+    .wrapper {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background: #34495e;
+    }
+
+    /* Main */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #ecf0f1;
+      overflow-y: auto; /* scrollable now */
+    }
+
+    /* Top Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      height: 100px;
+    }
+
+    /* Scrollable Middle Content */
+    .content {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .block {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* Bottom */
+    .bottom {
+      background: white;
+      padding: 20px;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      height: 120px;
+      margin: 20px;
+    }
+
+    /* Sections */
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>Shroti Telecom Pvt. Ltd.</div>
+    <div class="user">👤 Super Admin</div>
+  </div>
+
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a href="demo.html" class="active" onclick="showSection('home')">Home</a>
+      <a href="analytics.html" onclick="showSection('analytics')">NOC Analytics</a>
+      <a href="energy.html" onclick="showSection('energy')">Energy</a>
+      <a href="battery.html" onclick="showSection('battery')">Battery</a>
+      <a href="grid_billing.html" onclick="showSection('grid_billing')">Grid Billing</a>
+      <a href="maps.html" onclick="showSection('maps')">Maps</a>
+      <a href="reports.html" onclick="showSection('reports')">Reports</a>
+      <a href="admin.html" onclick="showSection('admin')">Admin</a>  
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+      <!-- Sections -->
+      <div id="home" class="section active">
+        <!-- Top Cards -->
+        <div class="cards">
+          <div class="card">Card 1</div>
+          <div class="card">Card 2</div>
+          <div class="card">Card 3</div>
+          <div class="card">Card 4</div>
+        </div>
+
+        <!-- Scrollable Middle -->
+        <div class="content">
+          <div class="block"><canvas id="chart1"></canvas></div>
+          <div class="block"><canvas id="chart2"></canvas></div>
+          <div class="block"><canvas id="chart3"></canvas></div>
+          <div class="block"><canvas id="chart4"></canvas></div>
+        </div>
+
+        <!-- Bottom Block -->
+        <div class="bottom">Bottom Wide Block</div>
+      </div>
+
+      <div id="analytics" class="section">
+        <h2 style="padding:20px;">Analytics Section</h2>
+      </div>
+
+      <div id="energy" class="section">
+        <h2 style="padding:20px;">Energy Section</h2>
+      </div>
+      <div id="battery" class="section">
+        <h2 style="padding:20px;">Battery Section</h2>
+      </div>
+      <div id="grid_billing" class="section">
+        <h2 style="padding:20px;">Grid billing Section</h2>
+      </div>
+      <div id="maps" class="section">
+        <h2 style="padding:20px;">Maps Section</h2>
+      </div>
+      <div id="reports" class="section">
+        <h2 style="padding:20px;">Reports Section</h2>
+      </div>
+      <div id="admin" class="section">
+        <h2 style="padding:20px;">Admin Section</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2020-2025 Shroti Telecom Pvt. Ltd. All Rights Reserved.
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(sectionId).classList.add("active");
+
+      document.querySelectorAll(".sidebar a").forEach(link => link.classList.remove("active"));
+      event.target.classList.add("active");
+    }
+
+    // Charts
+    const charts = [
+      {id: 'chart1', type: 'bar'},
+      {id: 'chart2', type: 'line'},
+      {id: 'chart3', type: 'pie'},
+      {id: 'chart4', type: 'doughnut'}
+    ];
+
+    charts.forEach(cfg => {
+      new Chart(document.getElementById(cfg.id), {
+        type: cfg.type,
+        data: {
+          labels: ['A', 'B', 'C', 'D', 'E'],
+          datasets: [{
+            label: 'Demo Data',
+            data: [12, 19, 3, 5, 2],
+            backgroundColor: [
+              'rgba(255,99,132,0.6)',
+              'rgba(54,162,235,0.6)',
+              'rgba(255,206,86,0.6)',
+              'rgba(75,192,192,0.6)',
+              'rgba(153,102,255,0.6)'
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

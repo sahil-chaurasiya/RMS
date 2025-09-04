@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maps</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      height: 60px;
+      background: #2c3e50;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    /* .header .logo {
+      font-size: 18px;
+      font-weight: bold;
+    } */
+
+    .header {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .header .user {
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+    .footer {
+      height: 30px;
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* WRAPPER */
+    .wrapper {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background: #34495e;
+    }
+
+    /* Main */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #ecf0f1;
+      overflow-y: auto; /* scrollable now */
+    }
+
+    /* Top Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      height: 100px;
+    }
+
+    /* Scrollable Middle Content */
+    .content {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .block {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* Bottom */
+    .bottom {
+      background: white;
+      padding: 20px;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      height: 120px;
+      margin: 20px;
+    }
+
+    /* Sections */
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>Dashboard</div>
+    <div class="user">👤 Super Admin</div>
+  </div>
+
+  <div class="wrapper">
+    <div class="sidebar">
+      <a href="demo.html">Home</a>
+      <a href="analytics.html">NOC Analytics</a>
+      <a href="energy.html">Energy</a>
+      <a href="battery.html">Battery</a>
+      <a href="grid_billing.html">Grid Billing</a>
+      <a href="maps.html" class="active">Maps</a>
+      <a href="reports.html">Reports</a>
+      <a href="admin.html">Admin</a>
+    </div>
+
+    <div class="main">
+      <h2 style="padding:20px;">Maps Section</h2>
+    </div>
+  </div>
+
+  <div class="footer">© 2020-2025 All Rights Reserved.</div>
+</body>
+</html>

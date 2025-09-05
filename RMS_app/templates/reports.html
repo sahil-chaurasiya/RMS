@@ -1,183 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reports</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+{% extends "base.html" %}
+{% block body %}
+<style>
+  /* Same styling reusable from dashboard */
+  .main-content {
+    margin-top: 56px;
+    margin-left: 220px;
+    padding: 24px;
+    min-height: 100vh;
+    background: #f8f9fa;
+    color: #212529;
+  }
+  .card {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+    color: #212529;
+  }
+  h2, h5 { color: #343a40; }
+  p { color: #495057; }
+</style>
 
-    body {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
+<main class="main-content container-fluid">
+  <h2 class="mb-4">Reports</h2>
+  <p>Access and generate detailed reports on energy, battery, grid billing, and system performance.</p>
 
-    /* HEADER */
-    .header {
-      height: 60px;
-      background: #2c3e50;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-    }
-
-    /* .header .logo {
-      font-size: 18px;
-      font-weight: bold;
-    } */
-
-    .header {
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .header .user {
-      font-size: 14px;
-    }
-
-    /* FOOTER */
-    .footer {
-      height: 30px;
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* WRAPPER */
-    .wrapper {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 220px;
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .sidebar a:hover, .sidebar a.active {
-      background: #34495e;
-    }
-
-    /* Main */
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: #ecf0f1;
-      overflow-y: auto; /* scrollable now */
-    }
-
-    /* Top Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      padding: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      height: 100px;
-    }
-
-    /* Scrollable Middle Content */
-    .content {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .block {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      height: 250px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    canvas {
-      width: 100% !important;
-      height: 100% !important;
-    }
-
-    /* Bottom */
-    .bottom {
-      background: white;
-      padding: 20px;
-      border-radius: 10px 10px 0 0;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-      height: 120px;
-      margin: 20px;
-    }
-
-    /* Sections */
-    .section {
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-  </style>
-</head>
-<body>
-  <div class="header">
-    <div>Dashboard</div>
-    <div class="user">👤 Super Admin</div>
+  <div class="card">
+    <h5>Monthly Energy Report</h5>
+    <p>Summary of energy generation and consumption with graphical insights.</p>
   </div>
 
-  <div class="wrapper">
-    <div class="sidebar">
-      <a href="demo">Home</a>
-      <a href="analytics">NOC Analytics</a>
-      <a href="energy">Energy</a>
-      <a href="battery" class="active">Battery</a>
-      <a href="grid_billing">Grid Billing</a>
-      <a href="maps">Maps</a>
-      <a href="reports">Reports</a>
-      <a href="admin">Admin</a>
-    </div>
-
-    <div class="main">
-      <h2 style="padding:20px;">Reports Section</h2>
-    </div>
+  <div class="card">
+    <h5>Battery Health Report</h5>
+    <p>Details on battery performance, charge cycles, and predicted replacement timelines.</p>
   </div>
 
-  <div class="footer">© 2020-2025 All Rights Reserved.</div>
-</body>
-</html>
+  <div class="card">
+    <h5>Grid Billing Summary</h5>
+    <p>Overview of billing history, payments, and outstanding balances.</p>
+  </div>
+
+  <div class="card">
+    <h5>System Performance Metrics</h5>
+    <p>Comprehensive view of system uptime, incident logs, and operational metrics.</p>
+  </div>
+</main>
+{% endblock body %}

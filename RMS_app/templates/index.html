@@ -1,0 +1,135 @@
+{% extends "base.html" %} {% block body %}
+<style>
+  /* Main content area with margin to not get covered */
+  .main-content {
+    margin-top: 24px; /* top-bar height */
+    margin-left: 220px; /* sidebar width */
+    padding-top: 56px; /* top-bar height */
+    padding-bottom: 56px; /* footer height */
+    min-height: 100vh;
+    overflow-y: auto;
+    background: transparent;
+  }
+
+  /* Card styling */
+  .card {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Chart container */
+  .chart-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+</style>
+<main class="main-content container-fluid p-4">
+  <div class="container-fluid p-4">
+    <div class="row mb-4">
+      <div class="col-md-3"><div class="card text-center">Card 1</div></div>
+      <div class="col-md-3"><div class="card text-center">Card 2</div></div>
+      <div class="col-md-3"><div class="card text-center">Card 3</div></div>
+      <div class="col-md-3"><div class="card text-center">Card 4</div></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="chart-box"><canvas id="barChart"></canvas></div>
+      </div>
+      <div class="col-md-6">
+        <div class="chart-box"><canvas id="lineChart"></canvas></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="chart-box"><canvas id="pieChart"></canvas></div>
+      </div>
+      <div class="col-md-6">
+        <div class="chart-box"><canvas id="donutChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Chart.js Scripts -->
+<script>
+  // Bar Chart
+  new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+      labels: ["A", "B", "C", "D", "E"],
+      datasets: [
+        {
+          label: "Demo Data",
+          data: [12, 19, 4, 7, 3],
+          backgroundColor: [
+            "#fa90ad",
+            "#76b5eb",
+            "#fcdb7c",
+            "#6ae1e1",
+            "#a885e7",
+          ],
+        },
+      ],
+    },
+    options: { responsive: true },
+  });
+  // Line Chart
+  new Chart(document.getElementById("lineChart"), {
+    type: "line",
+    data: {
+      labels: ["A", "B", "C", "D", "E"],
+      datasets: [
+        {
+          label: "Demo Data",
+          data: [12, 17, 3, 5, 2],
+          borderColor: "#fa90ad",
+          backgroundColor: "rgba(250,144,173,0.2)",
+        },
+      ],
+    },
+    options: { responsive: true },
+  });
+  // Pie Chart
+  new Chart(document.getElementById("pieChart"), {
+    type: "pie",
+    data: {
+      labels: ["A", "B", "C", "D", "E"],
+      datasets: [
+        {
+          data: [12, 19, 4, 7, 3],
+          backgroundColor: [
+            "#fa90ad",
+            "#76b5eb",
+            "#fcdb7c",
+            "#6ae1e1",
+            "#a885e7",
+          ],
+        },
+      ],
+    },
+  });
+  // Donut Chart
+  new Chart(document.getElementById("donutChart"), {
+    type: "doughnut",
+    data: {
+      labels: ["A", "B", "C", "D", "E"],
+      datasets: [
+        {
+          data: [12, 19, 4, 7, 3],
+          backgroundColor: [
+            "#fa90ad",
+            "#76b5eb",
+            "#fcdb7c",
+            "#6ae1e1",
+            "#a885e7",
+          ],
+        },
+      ],
+    },
+  });
+</script>
+{% endblock body %}

@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 
-def demo(request):
-    return render(request, "demo.html")
+# Create your views here.
+def index(request):
+    return render(request, 'index.html')
+   # return HttpResponse("this is homepage")
 
 def analytics(request):
     return render(request, "analytics.html")
@@ -9,8 +11,8 @@ def analytics(request):
 def battery(request):
     return render(request, "battery.html")
 
-def admin(request):
-    return render(request, "admin.html")
+def useradmin(request):
+    return render(request, "useradmin.html")
 
 def energy(request):
     return render(request, "energy.html")
@@ -26,11 +28,3 @@ def maps(request):
 
 def reports(request):
     return render(request, "reports.html")
-
-
-
-
-
-
-
-

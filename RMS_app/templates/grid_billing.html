@@ -1,183 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grid Billing</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+{% extends "base.html" %}
+{% block body %}
+<style>
+  /* Main content area with margin to not get covered */
+  .main-content {
+    margin-top: 56px; /* top-bar height */
+    margin-left: 220px; /* sidebar width */
+    padding-top: 24px;
+    padding-bottom: 56px; /* footer height */
+    min-height: 100vh;
+    overflow-y: auto;
+    background: #f8f9fa; /* Light background */
+    color: #212529; /* Dark text */
+  }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
+  /* Card styling with light colors */
+  .card {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff; /* white background */
+    border-radius: 12px;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+    color: #212529;
+  }
 
-    /* HEADER */
-    .header {
-      height: 60px;
-      background: #2c3e50;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-    }
+  /* Chart container with light background */
+  .chart-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+  }
 
-    /* .header .logo {
-      font-size: 18px;
-      font-weight: bold;
-    } */
+  /* Headings color */
+  h2, h5 {
+    color: #343a40;
+  }
 
-    .header {
-        font-size: 18px;
-        font-weight: bold;
-    }
+  /* Paragraph color */
+  p {
+    color: #495057;
+  }
+</style>
 
-    .header .user {
-      font-size: 14px;
-    }
+<main class="main-content container-fluid p-4">
+  <h2 class="mb-4">Grid Billing</h2>
+  <p>
+    Review billing details, energy consumption costs, payments, and outstanding balances.
+  </p>
 
-    /* FOOTER */
-    .footer {
-      height: 30px;
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* WRAPPER */
-    .wrapper {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 220px;
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .sidebar a:hover, .sidebar a.active {
-      background: #34495e;
-    }
-
-    /* Main */
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: #ecf0f1;
-      overflow-y: auto; /* scrollable now */
-    }
-
-    /* Top Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      padding: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      height: 100px;
-    }
-
-    /* Scrollable Middle Content */
-    .content {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .block {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      height: 250px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    canvas {
-      width: 100% !important;
-      height: 100% !important;
-    }
-
-    /* Bottom */
-    .bottom {
-      background: white;
-      padding: 20px;
-      border-radius: 10px 10px 0 0;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-      height: 120px;
-      margin: 20px;
-    }
-
-    /* Sections */
-    .section {
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-  </style>
-</head>
-<body>
-  <div class="header">
-    <div>Dashboard</div>
-    <div class="user">👤 Super Admin</div>
+  <div class="row mb-4">
+    <div class="col-md-3 mb-3"><div class="card text-center">Total Billed</div></div>
+    <div class="col-md-3 mb-3"><div class="card text-center">Payments Received</div></div>
+    <div class="col-md-3 mb-3"><div class="card text-center">Outstanding Balance</div></div>
+    <div class="col-md-3 mb-3"><div class="card text-center">Average Cost/kWh</div></div>
   </div>
 
-  <div class="wrapper">
-    <div class="sidebar">
-      <a href="demo">Home</a>
-      <a href="analytics">NOC Analytics</a>
-      <a href="energy">Energy</a>
-      <a href="battery" class="active">Battery</a>
-      <a href="grid_billing">Grid Billing</a>
-      <a href="maps">Maps</a>
-      <a href="reports">Reports</a>
-      <a href="admin">Admin</a>
-    </div>
-
-    <div class="main">
-      <h2 style="padding:20px;">Grid Billing Section</h2>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="chart-box">
+        <h5>Monthly Billing Amount</h5>
+        <canvas id="billingChart"></canvas>
+      </div>
     </div>
   </div>
+</main>
 
-  <div class="footer">© 2020-2025 All Rights Reserved.</div>
-</body>
-</html>
+<script>
+  const ctxBilling = document.getElementById('billingChart').getContext('2d');
+  new Chart(ctxBilling, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Billing Amount ($)',
+        data: [200, 220, 210, 230, 240, 250],
+        backgroundColor: '#1f77b4'
+      }]
+    },
+    options: { responsive: true }
+  });
+</script>
+{% endblock body %}
